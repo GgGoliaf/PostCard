@@ -1,0 +1,253 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #e5e7eb;
+    background-color: #050816;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.snow-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+    background-image: 
+        radial-gradient(circle, #ffffff 2px, transparent 3px),
+        radial-gradient(circle, #ffffff 3px, transparent 4px),
+        radial-gradient(circle, #ffffff 2px, transparent 3px),
+        radial-gradient(circle, #ffffff 3px, transparent 4px),
+        radial-gradient(circle, #ffffff 2px, transparent 3px);
+    background-size: 250px 250px;
+    background-position: 40px 40px, 120px 90px, 200px 30px, 80px 180px, 160px 220px;
+    animation: fallingSnow 7s linear infinite;
+}
+
+.card-container {
+    width: 480px;
+    height: 380px;
+    background-color: #361f1f;
+    background-image: 
+        linear-gradient(335deg, #2b1818 23px, transparent 23px),
+        linear-gradient(155deg, #2b1818 23px, transparent 23px),
+        linear-gradient(335deg, #2b1818 23px, transparent 23px),
+        linear-gradient(155deg, #2b1818 23px, transparent 23px);
+    background-size: 58px 58px;
+    background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
+    border: 3px solid #ffcca3;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-container:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+}
+
+.card-header {
+    width: 100%;
+    z-index: 10;
+    text-align: center;
+}
+
+.card-date {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #a38a75;
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+}
+
+.card-title {
+    font-size: 26px;
+    color: #ffcca3;
+    margin: 0;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 2px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.fireplace {
+    width: 240px;
+    height: 125px;
+    background-color: #0c0505;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 120px 120px 0 0;
+    box-shadow: inset 0 12px 25px rgba(0,0,0,0.95), 0 -5px 15px rgba(255, 94, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    z-index: 6;
+}
+
+.fire-flame {
+    width: 50px;
+    height: 60px;
+    background: linear-gradient(to top, #ff3700, #ffaa00);
+    border-radius: 50% 50% 30% 30%;
+    position: relative;
+    bottom: 2px;
+    box-shadow: 0 0 25px rgba(255, 94, 0, 0.7);
+    animation: blink 1.2s ease-in-out infinite;
+}
+
+.rope {
+    width: 100%;
+    height: 40px;
+    margin-top: 25px;
+    position: relative;
+    border-bottom: 5px solid #57331c;
+    border-radius: 50%;
+    z-index: 7;
+}
+
+.sock {
+    width: 100px;
+    height: 145px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 31px;
+}
+
+.sock-inside {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #fffbf2;
+    color: #422828;
+    border-radius: 0 0 45px 25px;
+    padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    box-shadow: inset 0 0 12px rgba(0,0,0,0.1);
+    line-height: 1.4;
+}
+
+.sock-inside p {
+    margin: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out 0.2s;
+}
+
+.sock:hover .sock-inside p {
+    opacity: 1;
+}
+
+.sock-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #bd2f2f;
+    border-radius: 0 0 45px 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    overflow: hidden;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.sock:hover .sock-front {
+    opacity: 0;
+}
+
+.sock-cuff {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background-color: #f0ede6;
+}
+
+.sock-heel {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #f0ede6;
+    bottom: 32px;
+    left: -6px;
+    border-radius: 50%;
+}
+
+.sock-toe {
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    background-color: #f0ede6;
+    bottom: -6px;
+    right: -6px;
+    border-radius: 50%;
+}
+
+.sock-pattern {
+    font-size: 24px;
+    transform: translateY(10px);
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.85;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes fallingSnow {
+    from {
+        background-position: 40px 40px, 120px 90px, 200px 30px, 80px 180px, 160px 220px;
+    }
+    to {
+        background-position: 40px 290px, 120px 340px, 200px 280px, 80px 430px, 160px 470px;
+    }
+}
